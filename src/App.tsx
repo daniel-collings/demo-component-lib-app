@@ -1,33 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { ChangeEvent, useState } from 'react'
 import './App.css'
+import {TimePicker} from 'boltviz-components-lib'
+import 'boltviz-components-lib/dist/esm/index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [time, setTime] = useState<string>("00:00")
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h1>{time}</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+          <TimePicker label="Time: " onChange={(e: ChangeEvent<HTMLInputElement>) => setTime(e.target.value)} value={time} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
